@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 320935886}
   - component: {fileID: 320935885}
   m_Layer: 5
-  m_Name: Button
+  m_Name: JoinButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -612,6 +612,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e79b6ac12be7f24597b4c81bda08611, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StateText: {fileID: 1477486653}
+  JoinButton: {fileID: 320935885}
 --- !u!4 &944103329
 Transform:
   m_ObjectHideFlags: 0

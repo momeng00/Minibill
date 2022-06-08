@@ -1,5 +1,4 @@
-
-using UnityEngine;
+using UnityEngine.UI;
 using Photon.Pun;
 using Photon.Realtime;
 
@@ -16,19 +15,19 @@ public class ServerManager : MonoBehaviourPunCallbacks
         PhotonNetwork.ConnectUsingSettings();
 
         JoinButton.interactable = false;
-        StateText.Text = "Connecting...";
+        StateText.text = "Connecting...";
     }
 
     public override void OnConnectedToMaster()
     {
         JoinButton.interactable = true;
-        StateText.Text = "Online";
+        StateText.text = "Online";
     }
 
-    public override OnDisconnected(OnDisconnectCause cause)
+    public override void OnDisconnected(DisconnectCause cause)
     {
         JoinButton.interactable = false;
-        StateText.Text = $"ERROR : {cause.ToString()}";
+        StateText.text = $"ERROR : {cause.ToString()}";
 
         PhotonNetwork.ConnectUsingSettings(); 
     }
@@ -39,25 +38,25 @@ public class ServerManager : MonoBehaviourPunCallbacks
 
         if(PhotonNetwork.IsConnected)
         {
-            StateText.Text = "Connecting to Room...";
+            StateText.text = "Connecting to Room...";
             PhotonNetwork.JoinRandomRoom();
         }
         else
         {
-            StateText.Text = "ERROR";
+            StateText.text = "ERROR";
             PhotonNetwork.ConnectUsingSettings();
         }
     }
 
-    public override void OnJoinRamdomFailed(short returnCode,string message)
+    public override void OnJoinRandomFailed(short returnCode,string message)
     {
-        StateText.Text = "Create New Room";
+        StateText.text = "Create New Room";
         PhotonNetwork.CreateRoom(null,new RoomOptions {MaxPlayers = 4});
     }
 
     public override void OnJoinedRoom()
     {
-        StateText.Text = "JoinRoom";
+        StateText.text = "JoinRoom";
         PhotonNetwork.LoadLevel("Main");
     }
     // Update is called once per frame
