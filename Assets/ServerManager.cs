@@ -27,7 +27,7 @@ public class ServerManager : MonoBehaviourPunCallbacks
     public override void OnDisconnected(DisconnectCause cause)
     {
         JoinButton.interactable = false;
-        StateText.text = $"ERROR : {cause.ToString()}";
+        StateText.text = cause.ToString();
 
         PhotonNetwork.ConnectUsingSettings(); 
     }
